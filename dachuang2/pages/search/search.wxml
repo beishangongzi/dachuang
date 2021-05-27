@@ -1,7 +1,28 @@
-<view>
-<button bindtap="selectimage">SELECT</button>
-<view class="container">
-        <image src='{{image}}'></image>
+<view class="container"> 
+<view class="body">
+<view class="swiper">
+    <view class="page-section page-section-spacing swiper">
+      <swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{imgs}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item {{item}}">
+                        <!-- <text>{{item}}</text> -->
+                        <image src="{{item}}"></image>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
 </view>
-<button bindtap="uploadImage">UPLOAD</button>
+<button bindtap="selectimage"  type="primary" >SELECT</button>
+<button bindtap="downloadImage2">Download</button>
+<view class='page-section'>
+        <view class="textarea-wrp">
+                <textarea auto-focus="true" value="{{value}}" disabled="true" maxlength="-1"/>
+                <!-- <view style="height: 500rpx">{{value}}</view> -->
+        </view>
 </view>
+</view>
+ </view>
+ 

@@ -4,3 +4,20 @@
     <text class="log-item">{{index + 1}}. {{log.date}}</text>
   </block>
 </view>
+
+
+<view class="container">
+        <view class="page-body">
+                <view class="camera">
+                        <button type="primary" bindtap="get_picture">拍照/上传图片</button>
+                </view>
+                <view class="expand">
+                        <button type="primary" bindtap="switch_to_expand">查看相关文献</button>
+                </view>
+                <view class="page-section">
+                        <view class="textarea-wrp">
+                                <textarea auto-focus="true" style="height: 3em" value="{{value}}" disabled="true" auto-height="true"/>
+                        </view>
+                </view>
+        </view>
+</view>
