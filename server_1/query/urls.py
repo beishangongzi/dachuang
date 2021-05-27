@@ -1,6 +1,7 @@
-from .views import getImage
+from .views import getImage, requestImage
 from django.urls import include, path
 
 urlpatterns = [
-    path('', getImage)
+    path("download", requestImage),
+    path('', getImage),
 ]
