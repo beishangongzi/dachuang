@@ -1,0 +1,7 @@
+<view>
+<button bindtap="selectimage">SELECT</button>
+<view class="container">
+        <image src='{{image}}'></image>
+</view>
+<button bindtap="uploadImage">UPLOAD</button>
+</view>
