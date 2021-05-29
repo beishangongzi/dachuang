@@ -29,6 +29,8 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'expand',
+    'query',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,3 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 IMAGES_DIR = "/tmp/"
 
 # SESSION_COOKIE_SECURE = True
+
+MEDIA_ROOT = 'media/'
+
+MEDIA_URL = 'media/'
