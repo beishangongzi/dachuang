@@ -1,14 +1,9 @@
-from django.http import HttpResponse, JsonResponse, StreamingHttpResponse
-from django.shortcuts import render
-from rest_framework.response import Response
-
 import torch
 import numpy as np
 import os
 from PIL import Image
 import torchvision.transforms as transforms
 import re
-from expand.models import Introduction
 
 
 def preProcess(image):
@@ -23,7 +18,7 @@ def preProcess(image):
 
 
 def pridict(img: Image, modelPath: None):
-    d = ['明万历','明嘉靖','明宣德','明成化','明永乐','明洪武','明隆庆','清乾隆', '清康熙', '清雍正']
+    d = ['明-万历','明-嘉靖','明-宣德','明-成化','明-永乐','明-洪武','明-隆庆','清-乾隆', '清-康熙', '清-雍正']
     if modelPath is None:
         modelPath = 'model.pkl'
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -41,28 +36,6 @@ def pridict(img: Image, modelPath: None):
     return d[classIndex_]
 
 
-
-
-# Create your views here.
-
-def getImage(request):
-    image = request.FILES["image"]
-    path = "/tmp/"
-    with open(path + "3.jpg", "wb+") as f:
-        f.write(image.read())
-        img = preProcess(image)
-        res = pridict(img, "/media/andy/Data/dachuang/server_1/query/model.pkl")
-        intro = Introduction.objects.get(id=res)
-        text = intro.text
-    return JsonResponse({"res": res, "text": text})
-
-
-def requestImage(request):
-    name = request.GET.get("name")
-    path = 'static/images/search/'
-    print(name)
-    with open(path+name, 'rb') as f:
-        return HttpResponse(f.read(), content_type='image/jpg')
-
-
-
+if __name__ == '__main__':
+    img = preProcess("./../static/images/search/swiper_image_3.png")
+    pridict(img, None)
